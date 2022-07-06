@@ -2,6 +2,7 @@ import leftSideContent from "./components/leftSide.js"
 import rightSideContent from "./components/rightSide.js"
 // import changeStep from "./functions.js"
 let stepCount = 0;
+const registerForm = document.getElementById('register_form');
 const leftSideContainer = document.getElementById("left_side");
 const getStartedButton = document.getElementById("get_started")
 const prevStep = document.getElementById("prev_step")
@@ -9,7 +10,8 @@ const nextStep = document.getElementById("next_step")
 const homePageRow = document.querySelector(".home_page_row")
 const registerRow = document.querySelector(".register_row ")
 let content = null
-
+let registerFormData = null
+let personal_info_errors = []
 
 getStartedButton.addEventListener("click", (e) => {
     stepCount++
@@ -39,7 +41,7 @@ prevStep.addEventListener("click", (e) => {
                 content = {
                     text: "When you see a good move, look for a better one.",
                     author: "Emanuel Lasker",
-                    image: "sec.png",
+                    image: "second.png",
                     position: "left"
                 }
                 leftSideContainer.innerHTML = leftSideContent(content)
@@ -69,20 +71,87 @@ nextStep.addEventListener("click", (e) => {
         console.log(stepCount);
         switch(stepCount) {
             case 1:
-                stepCount++
-                content = {
-                    text: `Many have become chess masters; 
-                    no one has become the master of chess.`,
-                    author: "Siegbert Tarrasch",
-                    image: "third.png",
-                    position: "right"
+                const entriesList = []
+                if (registerForm.name.value.trim().length > 2) {
+                    entriesList.push(['name', registerForm.name.value.trim()])
+                } else {
+                    personal_info_errors.push({
+                        type: "invalid name",
+                        message: "Please enter valid name",
+                        placeholder: "name"
+                    })
+                }// end name field
+                if (registerForm.email.value.trim().length > 2) {
+                    entriesList.push(['email', registerForm.email.value.trim()])
+                } else {
+                    personal_info_errors.push({
+                        type: "invalid email",
+                        message: "Please enter valid email address",
+                        placeholder: "email"
+                    })
+                }// end email field
+                if (registerForm.phone.value.trim().length > 2) {
+                    entriesList.push(['phone', registerForm.phone.value.trim()])
+                } else {
+                    personal_info_errors.push({
+                        type: "invalid phone number",
+                        message: "Please enter valid phone number",
+                        placeholder: "phone"
+                    })
+                }// end phone field
+                if (registerForm.date.value.trim().length > 2) {
+                    entriesList.push(['date', registerForm.date.value.trim()])
+                } else {
+                    personal_info_errors.push({
+                        type: "invalid date",
+                        message: "Please enter birth of date",
+                        placeholder: "date"
+                    })
+                }// end date field
+
+                // check errors
+                if(personal_info_errors.length) {
+                    personal_info_errors.forEach(error => {
+                        document.getElementById(error.placeholder).classList.add("inputError")
+                        console.log(error.message);
+                        
+                    })
+                } else {
+                    stepCount++
+                    content = {
+                        text: `Many have become chess masters; 
+                        no one has become the master of chess.`,
+                        author: "Siegbert Tarrasch",
+                        image: "third.png",
+                        position: "right"
+                    }
+                    leftSideContainer.innerHTML = leftSideContent(content)
                 }
-                leftSideContainer.innerHTML = leftSideContent(content)
+
+                const entries = new Map(entriesList)
+                // form validation
+                // const personal_info = {
+                    
+                // }
             break;
             default:
         }
     // }
 })
+
+//form
+if (localStorage.hasOwnProperty('registerFormData')) {
+    registerFormData = JSON.parse(localStorage.getItem('registerFormData'));
+} else {
+    registerFormData = {
+        personal_info: {
+
+        },
+        chess_experience: {
+    
+        }
+    }
+}
 
 // form input fields
 const input_fields = document.querySelectorAll(".personal_field")
