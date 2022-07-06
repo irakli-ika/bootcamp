@@ -32,6 +32,10 @@ main,
 .disabled {
     display: none;
 }
+.right-content {
+    width: 651px;
+}
+
 /* left side */
 .left_side.container {
     width: 923px;
@@ -70,6 +74,7 @@ main,
     background-image: var(--left_side_content_bg)
 }
 .text_content {
+    display: grid;
     position: absolute;
     top: 251px;
     left: 132px;
@@ -80,6 +85,12 @@ main,
     font-weight: 800;
     width: 423px;
     color: var(--color-black-1);
+}
+.right-content h3 {
+    justify-self: end;
+}
+.right-content h2 {
+    width: 100%;
 }
 .text_content h3 {
     font-weight: 500;

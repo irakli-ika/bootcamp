@@ -38,8 +38,8 @@ const leftSideContent = (_) => {
         </div>
     </div>
     <!-- and header container -->
-    <div class="left_side_bg ${authorBlockClass}" style="--left_side_content_bg:${bg_path}">
-        <div class="text_content">
+    <div class="left_side_bg" style="--left_side_content_bg:${bg_path}">
+        <div class="text_content ${authorBlockClass}">
         ${textBlock}
         ${authorBlock}
         </div>
