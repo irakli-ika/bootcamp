@@ -9,15 +9,16 @@ const prevStep = document.getElementById("prev_step")
 const nextStep = document.getElementById("next_step")
 
 prevStep.addEventListener("click",() => {
-    
+
 })
 
 getStartedButton.addEventListener("click", (e) => {
-    const rightSideContainer = document.querySelectorAll(".right_side_card")
-    const setArguments = {text: "When you see a good move, look for a better one.",
-                            author: "Emanuel Lasker", image: "second.png", position: "left"}
-    leftSideContainer.innerHTML = leftSideContent(setArguments)
-    // rightSideContainer.innerHTML = rightSideContent()
+    // const rightSideContainer = document.querySelectorAll(".right_side_card")
+    // const setArguments = {text: "When you see a good move, look for a better one.",
+    //                         author: "Emanuel Lasker", image: "second.png", position: "left"}
+    // leftSideContainer.innerHTML = leftSideContent(setArguments)
+    // // rightSideContainer.innerHTML = rightSideContent()
+    
 })
 
 // form input fields

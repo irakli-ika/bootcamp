@@ -24,7 +24,7 @@ body {
     margin: auto;
 }
 main,
-.home_page,
+.home_page_row,
 .register_row {
     display: flex;
     height: 100%;
@@ -95,7 +95,7 @@ main,
     text-transform: uppercase;
 }
 /* right side */
-.home_page .right_side_card {
+.home_page_row .right_side_card {
     position: relative;
     width: 997px;
     height: 100%;
