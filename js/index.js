@@ -8,9 +8,11 @@ const prevStep = document.getElementById("prev_step")
 const nextStep = document.getElementById("next_step")
 const homePageRow = document.querySelector(".home_page_row")
 const registerRow = document.querySelector(".register_row ")
+const fieldLabel = document.querySelectorAll(".field_label")
 let stepCount = 0;
 let content = null
 let registerFormData = null
+
 
 getStartedButton.addEventListener("click", (e) => {
     stepCount++
@@ -67,11 +69,11 @@ nextStep.addEventListener("click", (e) => {
     //     homePageRow.classList.remove("disabled")
     //     registerRow.classList.add("disabled")
     // } else {
-        console.log(stepCount);
         switch(stepCount) {
             case 1:
                 let personal_info_errors = []
                 const entriesList = []
+                localStorage.removeItem('registerFromData')
                 
                 document.querySelectorAll(".personal_field")
                 .forEach(input => input.classList.remove("inputError"));
@@ -105,7 +107,7 @@ nextStep.addEventListener("click", (e) => {
                         placeholder: "phone"
                     })
                 }// end phone field
-                
+
                 if (registerForm.date.value.trim().length > 2) {
                     entriesList.push(['date', registerForm.date.value.trim()])
                 } else {
@@ -126,6 +128,7 @@ nextStep.addEventListener("click", (e) => {
                 } else {
                     const entries = new Map(entriesList)
                     const entriesObject = Object.fromEntries(entries)
+                    registerFormData.personal_info = entriesObject
                     stepCount++
                     content = {
                         text: `Many have become chess masters; 
@@ -136,7 +139,8 @@ nextStep.addEventListener("click", (e) => {
                     }
                     leftSideContainer.innerHTML = leftSideContent(content)
                     
-                    localStorage.setItem(entriesObject, JSON.stringify(entriesObject))
+                    localStorage.setItem("registerFormData", JSON.stringify(registerFormData))
+
                 }
 
             break;
@@ -148,6 +152,15 @@ nextStep.addEventListener("click", (e) => {
 //form
 if (localStorage.hasOwnProperty('registerFormData')) {
     registerFormData = JSON.parse(localStorage.getItem('registerFormData'));
+    if (registerFormData.hasOwnProperty("personal_info")) {
+        registerForm.name.value = registerFormData.personal_info.name
+        registerForm.email.value = registerFormData.personal_info.email
+        registerForm.phone.value = registerFormData.personal_info.phone
+        registerForm.date.value = registerFormData.personal_info.date
+        fieldLabel.forEach(label => {
+            label.classList.add('disabled');
+        })
+    }
 } else {
     registerFormData = {
         personal_info: {
@@ -175,4 +188,5 @@ input_fields.forEach(field => {
             document.querySelector(`[for="${id}"]`).classList.remove("disabled")
         }
     })
+    
 })
