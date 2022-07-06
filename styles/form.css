@@ -113,14 +113,13 @@
     background-color: #FFEFEF !important;
     color: #DC3545;
 }
-.form_block .button {
+.buttons {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.form_block .button a,
-.form_block .button button {
+.change_step{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,16 +135,17 @@
     height: 53px;
     text-decoration: none;
 }
-.form_block .button a {
+.prev_btn {
     color: #212529;
     width: 93px;
     border: 1px solid #212529;
+    cursor: pointer;
 }
-.form_block .button a:hover {
+.prev_btn:hover {
     border-color: #C2A5F9CC;
     background-color: #B9B4C34D;
 }
-.form_block .button button{
+.next_btn{
     gap: 12px;
     background-color: #212529;
     color: #FFFFFF;
@@ -154,6 +154,6 @@
     border-width: 4px;
     cursor: pointer;
 }
-.form_block .button button:hover {
+.next_btn:hover {
     box-shadow: 0px 1px 4px #C2A5F9, 0px 0px 0px 3px #C2A5F9;
 }
