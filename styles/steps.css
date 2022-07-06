@@ -1,0 +1,50 @@
+/* steps */
+.right_side .main_content .steps_progress {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 366px;
+}
+.right_side .main_content .steps_progress::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 103px;
+    width: 174px;
+    height: 1px;
+    background-color: #B9B4C34D;
+}
+.right_side .main_content .number {
+    width: 40px;
+    height: 40px;
+    margin-inline: auto;
+    margin-bottom: 4px;
+    border: 1px solid #E5E6E8;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+}
+.right_side .main_content .first_step .number {
+    background: #FFFFFF;
+    color: #212529;
+}
+.right_side .main_content .sec_step .number {
+    background: #F5F5F5;
+    color: #95939A;
+}
+.right_side .main_content .text {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+.active {
+    background-color: #E9FAF1 !important;
+}
