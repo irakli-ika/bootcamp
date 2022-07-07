@@ -46,7 +46,7 @@ main,
     height: 100%;
 }
 .disabled {
-    display: none;
+    display: none !important;
 }
 .right-content {
     width: 651px;

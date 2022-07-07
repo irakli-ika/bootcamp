@@ -27,7 +27,8 @@
     position: relative;
     padding-bottom: 40px;
 }
-.field_label {
+.field_label,
+.select_label {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -99,6 +100,14 @@
 .inputs_group input:active {
     background-color: var(--color-white-3);
 }
+.select_group select {
+    height: 45px;
+    padding: 10px;
+    line-height: 22px;
+    width: 200px;
+    appearance: none;
+}
+
 .inputError {
     background-color: var(--color-red-3) !important;
     color: var(--color-red-2);
