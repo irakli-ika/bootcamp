@@ -12,39 +12,47 @@
     left: 103px;
     width: 174px;
     height: 1px;
-    background-color: #B9B4C34D;
+    background-color: var(--color-gray-1);
 }
 .right_side .main_content .number {
     width: 40px;
     height: 40px;
     margin-inline: auto;
     margin-bottom: 4px;
-    border: 1px solid #E5E6E8;
+    border: 1px solid var(--color-white-1);
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
 }
 .right_side .main_content .first_step .number {
-    background: #FFFFFF;
-    color: #212529;
+    background: var(--color-white);
+    color: var(--color-black-1);
 }
 .right_side .main_content .sec_step .number {
-    background: #F5F5F5;
-    color: #95939A;
+    background: var(--color-gray-2);
+    color: var(--color-gray);
 }
 .right_side .main_content .text {
-    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #000000;
+    color: var(--color-black);
 }
 .active {
-    background-color: #E9FAF1 !important;
+    background-color: var(--color-green-1) !important;
+}
+.done {
+    /* Vector */
+    position: absolute;
+    left: 13.03%;
+    right: 10.85%;
+    top: 29.6%;
+    bottom: 29.69%;
+
+    background: #3BAF77;
 }

@@ -1,7 +1,31 @@
+.right_side .main_content {
+    padding-left: 48px;
+    padding-top: 60px;
+    width: 775px;
+}
+.right_side .main_content .header {
+    margin-top: 112px;
+}
+.right_side .main_content .header h2{
+    font-size: 32px;
+    line-height: 48px;
+    color: var(--color-black);
+}
+.right_side .main_content .header h4 {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-gray);
+    text-transform: capitalize;
+}
+.right_side .main_content .header h2,
+.right_side .main_content .header h4 {
+    font-style: normal;
+    font-weight: 600;
+}
 /* form */
 .field_group {
     position: relative;
-    padding: 7px;
+    padding-bottom: 40px;
 }
 .field_label {
     display: flex;
@@ -12,49 +36,25 @@
     height: 46px;
     left: 0;
     top: 0;
-    inset: 7px;
-    padding: 0 7px;
     pointer-events: none;
-    color: var(--color-black-1);
-    box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.125);
-    border-radius: 4px;
-    font-family: 'Open Sans';
+    color: var(--color-black);
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
+    padding: 8px 16px;
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0px -1px 0px var(--color-black-2);
 }
 
 .field_label::after {
     content: attr(data-icon);
-    color: red;
+    color: var(--color-red);
 }
 .field_label::before {
     content: attr(data-placeholder);
-}
-.right_side .main_content {
-    padding-left: 48px;
-    padding-top: 60px;
-}
-.right_side .main_content .header {
-    margin-top: 112px;
-}
-.right_side .main_content .header h2{
-    font-size: 32px;
-    line-height: 48px;
-    color: #000000;
-}
-.right_side .main_content .header h4 {
-    font-size: 14px;
-    line-height: 21px;
-    color: #95939A;
-    text-transform: capitalize;
-}
-.right_side .main_content .header h2,
-.right_side .main_content .header h4 {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 600;
 }
 .register_form {
     position: relative;
@@ -83,35 +83,25 @@
     padding: 8px 16px;
     font-size: 20px;
     height: 46px;
-    /* background: #FFFFFF; */
     border: none;
-    box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0px -1px 0px var(--color-black-2);
     border-radius: 4px;
     outline: none;
 }
 .inputs_group input[name=date] {
     padding-right: 40px;
 }
-.inputs_group input::placeholder {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    line-height: 30px;
-    color: #212529;
-    font-size: 20px;
+.inputs_group input:hover,
+.inputs_group input:hover + .field_label  {
+    background-color: var(--color-white-2);
 }
-.inputs_group input:hover {
-    background-color: #F8F9FA;
-}
-.inputs_group input:hover::placeholder {
-    color: #21252980;
-}
+
 .inputs_group input:active {
-    background-color: #E9ECEF;
+    background-color: var(--color-white-3);
 }
 .inputError {
-    background-color: #FFEFEF !important;
-    color: #DC3545;
+    background-color: var(--color-red-3) !important;
+    color: var(--color-red-2);
 }
 .buttons {
     width: 100%;
@@ -124,7 +114,6 @@
     justify-content: center;
     align-items: center;
     margin-top: 48px;
-    font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -136,24 +125,25 @@
     text-decoration: none;
 }
 .prev_btn {
-    color: #212529;
+    background-color: transparent;
+    color: var(--color-black);
     width: 93px;
-    border: 1px solid #212529;
+    border: 1px solid var(--color-black);
     cursor: pointer;
 }
 .prev_btn:hover {
-    border-color: #C2A5F9CC;
-    background-color: #B9B4C34D;
+    border-color: var(--color-pink-1);
+    background-color: var(--color-gray-1);
 }
 .next_btn{
     gap: 12px;
-    background-color: #212529;
-    color: #FFFFFF;
+    background-color: var(--color-black);
+    color: var(--color-white);
     border-style: solid;
     border-color: transparent;
     border-width: 4px;
     cursor: pointer;
 }
 .next_btn:hover {
-    box-shadow: 0px 1px 4px #C2A5F9, 0px 0px 0px 3px #C2A5F9;
+    box-shadow: 0px 1px 4px var(--color-pink), 0px 0px 0px 3px var(--color-pink);
 }

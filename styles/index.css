@@ -2,14 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 @import url('steps.css');
 @import url('form.css');
+@import url('messageBox.css');
 :root{
     --left_side_content_bg: url("../assets/first.png");
+    --font-open-sans: 'Open Sans', sans-serif;
+    --font-nunito: 'Nunito', sans-serif;
+    --color-green-1: #E9FAF1;
     --color-pink: #C2A5F9;
+    --color-pink-1: #C2A5F9CC;
     --color-dark-pink: #7025FB;
+    --color-black: #000;
     --color-black-1: #212529;
+    --color-black-2: #00000020;
+    --color-gray: #95939A;
+    --color-gray-1: #B9B4C34D;
+    --color-gray-2: #F5F5F5;
     --color-white: #FFFFFF;
     --color-white-1: #E5E6E8;
+    --color-white-2: #f8f9fa;
+    --color-white-3: #E9ECEF;
+    --color-red: #fa2500;
     --color-red-1: #FD5334;
+    --color-red-2: #DC3545;
+    --color-red-3: #FFEFEF;
 }
 
 * {
@@ -22,6 +37,7 @@ body {
     width: 1920px;
     height: 1080px;
     margin: auto;
+    font-family: var(--font-open-sans);
 }
 main,
 .home_page_row,
@@ -101,11 +117,14 @@ main,
 }
 .text_content h2,
 .text_content h3 {
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-nunito);
     font-style: italic;
     text-transform: uppercase;
 }
 /* right side */
+.right_side_card {
+    position: relative;
+}
 .home_page_row .right_side_card {
     position: relative;
     width: 997px;
@@ -121,18 +140,16 @@ main,
     border-bottom: 1px solid #B9B4C34D;
 }
 .right_side_card > .header h4 {
-    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
     text-transform: capitalize;
 }
 .right_side_card .content {
-    font-family: 'Nunito', sans-serif; 
+    font-family: var(--font-nunito); 
     text-transform: uppercase;
     position: absolute;
     top: 265px;
     left: 85px;
-
 }
 .right_side_card .content h1 {
     font-weight: 800;
@@ -167,7 +184,6 @@ main,
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;

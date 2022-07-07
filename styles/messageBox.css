@@ -1,0 +1,48 @@
+/* message box */
+.message_box {
+    position: absolute;
+    right: 50px;
+    top: 100px;
+}
+.message_box_container li {
+    list-style-type: none;
+    width: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+}
+.message_box_container li > .message_head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #DC3545;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 7px 12px;
+}
+.message_box_container li > .message_head .close {
+    color: #95939A;
+}
+.message_box_container li > .message_head h3 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+}
+.message_box_container li > .message_head > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.message_box_container li > .message_body {
+    padding: 9px 12px;
+}
+.message_box_container li > .message_body > p{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #212529;
+}
