@@ -152,14 +152,45 @@
                                         <h4>This is basic information fields</h4>
                                     </div>
                                     <div class="select_group">
-                                        <div class="select_field_group">
-                                            <select name="level" id="level">
-                                                <option value=""></option>
-                                                <option value="biginner">biginner</option>
-                                                <option value="intermediate">intermediate</option>
-                                                <option value="professional">professional</option>
-                                            </select>
-                                            <!-- <label for="level" class="select_label">level of knowledge *</label> -->
+                                        <div>
+                                            <button class="select_label">first</button>
+                                            <div class="select_field_group">
+                                                <ul class="list_box">
+                                                    <li>
+                                                        <input type="radio" name="level" id="" value="">
+                                                        <label for="">one</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" name="level" id="" value="">
+                                                        <label for="">two</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" name="level" id="" value="">
+                                                        <label for="">three</label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button class="select_label">sec</button>
+                                            <div class="select_field_group">
+                                                <ul class="list_box">
+                                                    <ul >
+                                                        <li>
+                                                            <input type="radio" name="character" id="" value="">
+                                                            <label for="">one</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="character" id="" value="">
+                                                            <label for="">two</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="character" id="" value="">
+                                                            <label for="">three</label>
+                                                        </li>
+                                                    </ul>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div><!--end inputs_group -->
                                 </div><!-- end chess_experience-->
@@ -184,8 +215,12 @@
             
         </main><!-- end main container -->
 
-        
-
         <script type="module" src="./js/index.js"></script>
+        <script>
+            function closeMessageBox(e) {
+                const {messageId} = e.target.dataset;
+                document.getElementById(messageId).remove()
+            }
+        </script>
     </body>
 </html>

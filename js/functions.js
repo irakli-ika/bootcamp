@@ -1,4 +1,6 @@
-const changeStep = (e) => {
-    const {stepIndex} = e.target.dataset
-    console.log(stepIndex);
+// error message close function
+function closeMessageBox() {
+    console.log("ok");
 }
+
+export default closeMessageBox

@@ -27,8 +27,7 @@
     position: relative;
     padding-bottom: 40px;
 }
-.field_label,
-.select_label {
+.field_label {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -155,4 +154,23 @@
 }
 .next_btn:hover {
     box-shadow: 0px 1px 4px var(--color-pink), 0px 0px 0px 3px var(--color-pink);
+}
+
+/* custom select */
+.select_label {
+    padding: 10px 15px;
+    font-size: 18px;
+}
+.select_group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.list_box {
+    width: 100px;
+    margin: 10px;
+    border: 1px solid var(--color-black);
+}
+.list_box li {
+    padding: 5px;
 }

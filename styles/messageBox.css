@@ -20,8 +20,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     padding: 7px 12px;
 }
-.message_box_container li > .message_head .close {
+.message_box_container li > .message_head .close_message_box {
     color: #95939A;
+    cursor: pointer;
 }
 .message_box_container li > .message_head h3 {
     font-family: 'Open Sans';
