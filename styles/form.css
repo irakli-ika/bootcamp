@@ -1,7 +1,7 @@
 .right_side .main_content {
     padding-left: 48px;
     padding-top: 60px;
-    width: 775px;
+    width: 835px;
 }
 .right_side .main_content .header {
     margin-top: 112px;
@@ -27,16 +27,8 @@
     position: relative;
     padding-bottom: 40px;
 }
-.field_label {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 46px;
-    left: 0;
-    top: 0;
-    pointer-events: none;
+.field_label,
+.select_label {
     color: var(--color-black);
     font-style: normal;
     font-weight: 400;
@@ -48,15 +40,26 @@
     border-radius: 4px;
     box-shadow: inset 0px -1px 0px var(--color-black-2);
 }
+.field_label {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 46px;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+}
 
-.field_label::after {
+.field_label::after{
     content: attr(data-icon);
     color: var(--color-red);
 }
-.field_label::before {
+.field_label::before{
     content: attr(data-placeholder);
 }
-.register_form {
+/* .register_form {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -64,8 +67,7 @@
     padding: 0px;
     gap: 40px;
     width: 775px;
-    
-}
+} */
 .register_form > div {
     width: 100%;
 }
@@ -92,21 +94,93 @@
     padding-right: 40px;
 }
 .inputs_group input:hover,
-.inputs_group input:hover + .field_label  {
+.inputs_group input:hover + .field_label,
+.select_label:hover  {
     background-color: var(--color-white-2);
 }
 
-.inputs_group input:active {
+.inputs_group input:active,
+.select_label:active {
     background-color: var(--color-white-3);
 }
-.select_group select {
-    height: 45px;
-    padding: 10px;
-    line-height: 22px;
-    width: 200px;
-    appearance: none;
+/* custom select */
+.select_label {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    width: 380px;
+    cursor: pointer;
 }
-
+.select_label:first-child {
+    margin-right: 25px;
+}
+.select_label > span:first-child  {
+    color: var(--color-red);
+    padding-left: 5px;
+}
+.select_label svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+.select_group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 95px;
+    font-family: var(--font-open-sans);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+}
+.list_box {
+    position: absolute;
+    margin-block: 5px;
+    list-style-type: none;
+    width: 391px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-1);
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    
+}
+.list_box li:hover {
+    background-color: var(--color-white-2);
+}
+.list_box li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 8px;
+}
+.list_box label,
+.list_box li {
+    cursor: pointer;
+}
+.list_box li input {
+    display: none;
+}
+.list_box li img {
+    width: 100px;
+    height: 72px;
+    border-radius: 4px;
+}
+.list_box_level {
+    padding-block: 20px;
+}
+.list_box_level li{
+    padding-inline: 20px;
+}
+.list_box_character {
+    padding-top: 40px;
+    padding-bottom: 35px;
+}
+.list_box_character li {
+    padding-left: 28px;
+    padding-right: 20px;
+}
 .inputError {
     background-color: var(--color-red-3) !important;
     color: var(--color-red-2);
@@ -154,23 +228,4 @@
 }
 .next_btn:hover {
     box-shadow: 0px 1px 4px var(--color-pink), 0px 0px 0px 3px var(--color-pink);
-}
-
-/* custom select */
-.select_label {
-    padding: 10px 15px;
-    font-size: 18px;
-}
-.select_group {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-.list_box {
-    width: 100px;
-    margin: 10px;
-    border: 1px solid var(--color-black);
-}
-.list_box li {
-    padding: 5px;
 }

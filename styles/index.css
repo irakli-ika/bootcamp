@@ -11,6 +11,7 @@
     --color-pink: #C2A5F9;
     --color-pink-1: #C2A5F9CC;
     --color-dark-pink: #7025FB;
+    --color-blue-1: #093F68;
     --color-black: #000;
     --color-black-1: #212529;
     --color-black-2: #00000020;
@@ -50,6 +51,11 @@ main,
 }
 .right-content {
     width: 651px;
+    
+}
+.right-content > h3 {
+    color: var(--color-blue-1) !important;
+    
 }
 
 /* left side */
