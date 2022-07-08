@@ -233,4 +233,12 @@ input_fields.forEach(field => {
     })
     
 })
-// closeMessageBox()
+
+//select function
+const openLevelSelect = document.querySelectorAll(".open_select_box");
+
+openLevelSelect.forEach(select => {
+    select.addEventListener("click", (e) => {
+        document.getElementById(e.target.dataset.selectBox).classList.toggle("disabled")
+    })
+})
