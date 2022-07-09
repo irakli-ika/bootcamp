@@ -1,5 +1,6 @@
 import leftSideContent from "./components/leftSide.js"
 import messageBox from "./components/messageBox.js"
+import getData from "./fetchData.js"
 
 const registerForm = document.getElementById('register_form');
 const leftSideContainer = document.getElementById("left_side");
@@ -60,18 +61,7 @@ prevStep.addEventListener("click", (e) => {
                 chessExperience.classList.add("disabled")
                 chessExperienceHeader.classList.add("disabled")
               break;
-            // case 3:
-            //     stepCount--
-            //     content = {
-            //         text: "When you see a good move, look for a better one.",
-            //         author: "Emanuel Lasker", 
-            //         image: "sec.png", 
-            //         position: "left"
-            //     }
-            //     leftSideContainer.innerHTML = leftSideContent(content)
-            //   break;
             default:
-              // code block
           } 
     }
 })
@@ -156,7 +146,7 @@ nextStep.addEventListener("click", (e) => {
                     registerFormData.personal_info = entriesObject
                     stepCount++
                     content = {
-                        text: `Many have become chess masters;                        no one has become the master of chess.`,
+                        text: `Many have become chess masters;no one has become the master of chess.`,
                         author: "Siegbert Tarrasch",
                         image: "third.png",
                         position: "right"
@@ -177,6 +167,7 @@ nextStep.addEventListener("click", (e) => {
                     firstStepBar.classList.add("active")
 
                 }
+                
             break;
             default:
         }
@@ -233,21 +224,8 @@ input_fields.forEach(field => {
     
 })
 
-//select function
-const openSelect = document.querySelectorAll(".open_select_box");
-const labelLevelArrow = document.querySelectorAll(".label_level_arrow")
-const labelCharacterArrow = document.querySelectorAll(".label_character_arrow")
 
-openSelect.forEach(select => {
-    select.addEventListener("click", (e) => {
-        const select = document.getElementById(e.target.dataset.selectBox)
-        select.classList.toggle("disabled")
-        
-        labelLevelArrow.forEach(arrow => {
-            arrow.classList.toggle("disabled")
-        })
-        labelCharacterArrow.forEach(arrow => {
-            arrow.classList.toggle("disabled")
-        })
-    })
-})
+// get fetch on window onload
+window.onload = () => {
+    getData('https://chess-tournament-api.devtest.ge/api/grandmasters')
+}
