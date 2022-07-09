@@ -7,7 +7,6 @@ openSelect.forEach(select => {
         const selectArrow = document.querySelectorAll("." + e.target.dataset.labelArrow)
         
         select.classList.toggle("disabled")
-        
         selectArrow.forEach(arrow => {
             arrow.classList.toggle("disabled")
         })

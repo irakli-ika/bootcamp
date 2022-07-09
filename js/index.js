@@ -224,8 +224,28 @@ input_fields.forEach(field => {
     
 })
 
+const selects = document.querySelectorAll(".list_box li")
 
-// get fetch on window onload
-window.onload = () => {
-    getData('https://chess-tournament-api.devtest.ge/api/grandmasters')
-}
+selects.forEach(select => {
+    select.addEventListener("click", e => {
+        const selectType = e.target.dataset.selectLists
+        const selectedInner = e.target.innerHTML
+        const selectBox = document.getElementById(selectType)
+        const selectBoxInner = document.querySelector("." + selectType)
+        const selectListArrow = document.querySelectorAll("." + e.target.dataset.selectArrow)
+
+        selectBox.classList.add('disabled')
+        selectBoxInner.innerHTML = selectedInner
+        selectListArrow.forEach(e => {
+            e.classList.toggle("disabled")
+
+        })
+
+    })
+})
+
+
+// // get fetch on window onload
+// window.onload = () => {
+//     getData('https://chess-tournament-api.devtest.ge/api/grandmasters')
+// }

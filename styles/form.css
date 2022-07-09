@@ -59,15 +59,6 @@
 .field_label::before{
     content: attr(data-placeholder);
 }
-/* .register_form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 40px;
-    width: 775px;
-} */
 .register_form > div {
     width: 100%;
 }
@@ -105,28 +96,29 @@
 }
 /* custom select */
 .select_label {
-    position: relative;
     display: block;
     padding: 10px 15px;
     width: 380px;
     cursor: pointer;
 }
+.select_label_holder {
+    position: relative;
+}
+.flake {
+    color: var(--color-red);
+    padding-left: 5px;
+    pointer-events: none;
+}
 .select_label:first-child {
     margin-right: 25px;
 }
-.select_label > span:first-child  {
-    color: var(--color-red);
-    padding-left: 5px;
-}
-.select_label svg {
+.select_label_arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 20px;
+    right: 40px;
 }
 .select_group {
-    display: flex;
-    align-items: center;
     position: relative;
     margin-top: 95px;
     font-family: var(--font-open-sans);
@@ -135,6 +127,11 @@
     font-size: 20px;
     line-height: 30px;
 }
+.select_holder {
+    display: flex;
+    align-items: center;
+    margin-bottom: 90px;
+}
 .list_box {
     position: absolute;
     margin-block: 5px;
@@ -142,7 +139,7 @@
     width: 391px;
     background-color: var(--color-white);
     border: 1px solid var(--color-gray-1);
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 10%);
+    box-shadow: 0px 2px 4px var(--color-black-2);
     border-radius: 4px;
     
 }
@@ -154,6 +151,14 @@
     justify-content: space-between;
     align-items: center;
     padding-block: 8px;
+}
+.list_box label {
+    width: 100%;
+    padding-inline: 20px;
+}
+.list_box li {
+    width: 100%;
+    padding-inline: 20px;
 }
 .list_box label,
 .list_box li {
@@ -170,15 +175,30 @@
 .list_box_level {
     padding-block: 20px;
 }
-.list_box_level li{
-    padding-inline: 20px;
-}
 .list_box_character {
     padding-top: 40px;
     padding-bottom: 35px;
 }
 .list_box_character li {
     padding-left: 28px;
+    padding-right: 20px;
+}
+.radio_label {
+    display: block;
+    color: var(--color-black);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.radio_container input[type="radio"] {
+    width: 20px;
+    height: 20px;
+}
+.radio_container label {
+    padding-left: 10px;
     padding-right: 20px;
 }
 .inputError {
