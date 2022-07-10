@@ -147,8 +147,8 @@ nextStep.addEventListener("click", (e) => {
                 } else {
                     const entries = new Map(entriesList)
                     const entriesObject = Object.fromEntries(entries)
+                    
                     registerFormData.personal_info = entriesObject
-                    console.log(registerFormData);
                     stepCount++
                     content = {
                         text: `Many have become chess masters;no one has become the master of chess.`,
@@ -195,6 +195,11 @@ if (localStorage.hasOwnProperty('registerFormData')) {
         registerForm.date.value = registerFormData.personal_info.date
         
         fieldLabel.forEach(label => label.classList.add('disabled'))
+    }
+}else {
+    registerFormData = {
+        personal_info: {},
+        chess_experience: {}
     }
 }
 
