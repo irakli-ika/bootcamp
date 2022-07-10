@@ -241,7 +241,7 @@ selects.forEach(select => {
 
 // Done button function
 doneStep.addEventListener("click", e => {
-    const chess_experience_errors = []
+    let chess_experience_errors = []
     const selectLevel = document.querySelector(".select_label.level").dataset.selectValue
     const selectCharacter = document.querySelector(".select_label.character").dataset.selectValue
     const selectParticipate = document.getElementsByName("participate")
@@ -283,10 +283,10 @@ doneStep.addEventListener("click", e => {
     if (chess_experience_errors.length) {
         console.log(chess_experience_errors);
     }
-    console.log("ok");
 })
 
-// // get fetch on window onload
-// window.onload = () => {
-//     getData('https://chess-tournament-api.devtest.ge/api/grandmasters')
-// }
+// get fetch on window onload
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(getData("https://chess-tournament-api.devtest.ge/api/grandmasters"));
+ 
+ })

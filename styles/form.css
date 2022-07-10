@@ -166,6 +166,7 @@
     width: 100px;
     height: 72px;
     border-radius: 4px;
+    object-fit: cover;
 }
 .list_box_level {
     padding-block: 20px;
