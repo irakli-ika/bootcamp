@@ -220,7 +220,8 @@ input_fields.forEach(field => {
 })
 
 // select section
-const selects = document.querySelectorAll(".list_box li")
+const selects = document.querySelectorAll(".list_box")
+const openSelectBox = document.querySelectorAll(".open_select_box")
 
 selects.forEach(select => {
     select.addEventListener("click", e => {
@@ -234,34 +235,29 @@ selects.forEach(select => {
         selectBoxInner.innerHTML = selectedInner
         document.querySelector("." + selectType).dataset.selectValue = selectedInner
         selectListArrow.forEach(e => e.classList.toggle("disabled"))
-
-
     })
 })
 
 // Done button function
 doneStep.addEventListener("click", e => {
+    openSelectBox.forEach(select => select.classList.remove("inputError"))
     let chess_experience_errors = []
     const selectLevel = document.querySelector(".select_label.level").dataset.selectValue
     const selectCharacter = document.querySelector(".select_label.character").dataset.selectValue
     const selectParticipate = document.getElementsByName("participate")
     let experienceLevel;
     let alreadyParticipated;
-    let radioRespons;
     let characterId;
     // const registerInfo = []
-
-    selectParticipate.forEach(radio => {
-        if (radio.checked) radioRespons = radio.value
-    })
+    
 
     if (selectLevel) {
         experienceLevel = selectLevel
     } else {
         chess_experience_errors.push({
             type: "empty knowledge",
-            message: "Please enter knowledge field",
-            placeholder: "knowledge"
+            message: "Please choose knowledge field",
+            placeholder: "level"
         })
     }
     if (selectCharacter) {
@@ -269,24 +265,27 @@ doneStep.addEventListener("click", e => {
     } else {
         chess_experience_errors.push({
             type: "empty character",
-            message: "Please enter character field",
+            message: "Please choose character field",
             placeholder: "character"
         })
     }
-    if (!radioRespons) {
-        chess_experience_errors.push({
-            type: "empty participate",
-            message: "Please check participate field",
-            placeholder: "participate"
-        })
-    }
     if (chess_experience_errors.length) {
-        console.log(chess_experience_errors);
+        setTimeout(() => {
+            messageBoxContainer.innerHTML = ""
+        }, 5000)
+        chess_experience_errors.forEach(error => {
+
+            const selects = document.querySelectorAll("." + error.placeholder)
+            selects.forEach(select => select.classList.add("inputError"))
+            // selects.classList.add("inputError")
+            messageBoxContainer.insertAdjacentHTML("beforeend", messageBox({id: uid(), headContent: error.type, bodyContent: error.message}))
+        })
+    } else {
     }
 })
 
 // get fetch on window onload
 document.addEventListener('DOMContentLoaded', () => {
-    console.log(getData("https://chess-tournament-api.devtest.ge/api/grandmasters"));
+    getData("https://chess-tournament-api.devtest.ge/api/grandmasters")
  
  })
