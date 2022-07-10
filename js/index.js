@@ -6,6 +6,7 @@ const registerForm = document.getElementById('register_form');
 const leftSideContainer = document.getElementById("left_side");
 const getStartedButton = document.getElementById("get_started")
 const prevStep = document.getElementById("prev_step")
+const doneStep = document.getElementById("done_step")
 const nextStep = document.getElementById("next_step")
 const homePageRow = document.querySelector(".home_page_row")
 const registerRow = document.querySelector(".register_row ")
@@ -40,6 +41,7 @@ getStartedButton.addEventListener("click", (e) => {
 
 prevStep.addEventListener("click", (e) => {
     let content = null
+    console.log(stepCount);
     if (stepCount === 1) {
         stepCount--
         homePageRow.classList.remove("disabled")
@@ -60,6 +62,8 @@ prevStep.addEventListener("click", (e) => {
                 personalInfoHeader.classList.remove("disabled")
                 chessExperience.classList.add("disabled")
                 chessExperienceHeader.classList.add("disabled")
+                nextStep.classList.remove("disabled")
+                doneStep.classList.add("disabled")
               break;
             default:
           } 
@@ -144,6 +148,7 @@ nextStep.addEventListener("click", (e) => {
                     const entries = new Map(entriesList)
                     const entriesObject = Object.fromEntries(entries)
                     registerFormData.personal_info = entriesObject
+                    console.log(registerFormData);
                     stepCount++
                     content = {
                         text: `Many have become chess masters;no one has become the master of chess.`,
@@ -165,9 +170,9 @@ nextStep.addEventListener("click", (e) => {
                     </svg>`
                     firstStepBar.innerHTML = firstStepDoneIcon
                     firstStepBar.classList.add("active")
-
+                    e.target.classList.add("disabled")
+                    doneStep.classList.remove("disabled")
                 }
-                
             break;
             default:
         }
@@ -177,9 +182,8 @@ nextStep.addEventListener("click", (e) => {
 input_fields.forEach(field => {
 field.addEventListener("input", (e) => e ? firstStepBar.classList.add("active") : "")
 
-if (field.value) {
-    firstStepBar.classList.add("active")
-} else firstStepBar.classList.remove("active")
+if (field.value) firstStepBar.classList.add("active")
+else firstStepBar.classList.remove("active")
 })
 //form
 if (localStorage.hasOwnProperty('registerFormData')) {
@@ -190,25 +194,13 @@ if (localStorage.hasOwnProperty('registerFormData')) {
         registerForm.phone.value = registerFormData.personal_info.phone
         registerForm.date.value = registerFormData.personal_info.date
         
-        fieldLabel.forEach(label => {
-            label.classList.add('disabled');
-        })
-    }
-} else {
-    registerFormData = {
-        personal_info: {
-
-        },
-        chess_experience: {
-    
-        }
+        fieldLabel.forEach(label => label.classList.add('disabled'))
     }
 }
 
 // form input fields
 input_fields.forEach(field => {
     field.addEventListener("focus", (e) => {
-        // console.log(e);
         const id = e.target.id
         document.querySelector(`[for="${id}"]`).classList.add("disabled")
         
@@ -217,33 +209,77 @@ input_fields.forEach(field => {
     field.addEventListener("blur", (e) => {
         const value = e.target.value.trim()
         const id = e.target.id
-        if(value.length === 0) {
-            document.querySelector(`[for="${id}"]`).classList.remove("disabled")
-        }
+        if(value.length === 0) document.querySelector(`[for="${id}"]`).classList.remove("disabled")
     })
     
 })
 
+// select section
 const selects = document.querySelectorAll(".list_box li")
 
 selects.forEach(select => {
     select.addEventListener("click", e => {
         const selectType = e.target.dataset.selectLists
-        const selectedInner = e.target.innerHTML
+        const selectedInner = e.target.innerText
         const selectBox = document.getElementById(selectType)
         const selectBoxInner = document.querySelector("." + selectType)
         const selectListArrow = document.querySelectorAll("." + e.target.dataset.selectArrow)
 
         selectBox.classList.add('disabled')
         selectBoxInner.innerHTML = selectedInner
-        selectListArrow.forEach(e => {
-            e.classList.toggle("disabled")
+        document.querySelector("." + selectType).dataset.selectValue = selectedInner
+        selectListArrow.forEach(e => e.classList.toggle("disabled"))
 
-        })
 
     })
 })
 
+// Done button function
+doneStep.addEventListener("click", e => {
+    const chess_experience_errors = []
+    const selectLevel = document.querySelector(".select_label.level").dataset.selectValue
+    const selectCharacter = document.querySelector(".select_label.character").dataset.selectValue
+    const selectParticipate = document.getElementsByName("participate")
+    let experienceLevel;
+    let alreadyParticipated;
+    let radioRespons;
+    let characterId;
+    // const registerInfo = []
+
+    selectParticipate.forEach(radio => {
+        if (radio.checked) radioRespons = radio.value
+    })
+
+    if (selectLevel) {
+        experienceLevel = selectLevel
+    } else {
+        chess_experience_errors.push({
+            type: "empty knowledge",
+            message: "Please enter knowledge field",
+            placeholder: "knowledge"
+        })
+    }
+    if (selectCharacter) {
+        alreadyParticipated = selectCharacter
+    } else {
+        chess_experience_errors.push({
+            type: "empty character",
+            message: "Please enter character field",
+            placeholder: "character"
+        })
+    }
+    if (!radioRespons) {
+        chess_experience_errors.push({
+            type: "empty participate",
+            message: "Please check participate field",
+            placeholder: "participate"
+        })
+    }
+    if (chess_experience_errors.length) {
+        console.log(chess_experience_errors);
+    }
+    console.log("ok");
+})
 
 // // get fetch on window onload
 // window.onload = () => {

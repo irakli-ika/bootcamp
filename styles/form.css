@@ -151,23 +151,18 @@
     justify-content: space-between;
     align-items: center;
     padding-block: 8px;
-}
-.list_box label {
     width: 100%;
     padding-inline: 20px;
-}
-.list_box li {
-    width: 100%;
-    padding-inline: 20px;
-}
-.list_box label,
-.list_box li {
     cursor: pointer;
+}
+.list_box span {
+    pointer-events: none;
 }
 .list_box li input {
     display: none;
 }
 .list_box li img {
+    pointer-events: none;
     width: 100px;
     height: 72px;
     border-radius: 4px;
@@ -237,7 +232,8 @@
     border-color: var(--color-pink-1);
     background-color: var(--color-gray-1);
 }
-.next_btn{
+.next_btn,
+.done_btn{
     gap: 12px;
     background-color: var(--color-black);
     color: var(--color-white);
@@ -246,6 +242,7 @@
     border-width: 4px;
     cursor: pointer;
 }
-.next_btn:hover {
+.next_btn:hover,
+.done_btn:hover {
     box-shadow: 0px 1px 4px var(--color-pink), 0px 0px 0px 3px var(--color-pink);
 }
