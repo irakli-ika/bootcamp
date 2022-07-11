@@ -45,7 +45,6 @@ getStartedButton.addEventListener("click", (e) => {
 
 prevStep.addEventListener("click", (e) => {
     let content = null
-    console.log(stepCount);
     if (stepCount === 1) {
         stepCount--
         homePageRow.classList.remove("disabled")
@@ -157,7 +156,6 @@ nextStep.addEventListener("click", (e) => {
                     position: "right"
                 }
                 leftSideContainer.innerHTML = leftSideContent(content)
-                console.log(registerFormData.personal_info);
                 
                 localStorage.setItem("registerFormData", JSON.stringify(registerFormData))
                 personalInfo.classList.add("disabled")
@@ -171,7 +169,6 @@ nextStep.addEventListener("click", (e) => {
                 firstStepBar.innerHTML = firstStepDoneIcon
                 firstStepBar.classList.add("active")
                 e.target.classList.add("disabled")
-                console.log(e.target);
                 doneStep.classList.remove("disabled")
             }
         break;
@@ -273,6 +270,34 @@ doneStep.addEventListener("click", e => {
             messageBoxContainer.insertAdjacentHTML("beforeend", messageBox({id: uid(), headContent: error.type, bodyContent: error.message}))
         })
     } else {
+        const date =  registerFormData.personal_info.date.split("-")
+        const dateFormat = `${date[1]}/${date[2]}/${date[0]}`
+
+        fetch('https://chess-tournament-api.devtest.ge/api/register', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: registerFormData.personal_info.name,
+                email: registerFormData.personal_info.email,
+                phone:  registerFormData.personal_info.phone,
+                date_of_birth: dateFormat,
+                experience_level: "beginner",
+                already_participated: true,
+                character_id: 2
+
+              }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                console.log(response);
+            }
+            return Promise.reject(response);
+        }).then(function (data) {
+            console.log(data);
+        }).catch(function (error) {
+            console.warn('Something went wrong.', error);
+        });
     }
 })
 
