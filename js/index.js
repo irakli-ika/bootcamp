@@ -272,7 +272,7 @@ doneStep.addEventListener("click", e => {
     } else {
         const date =  registerFormData.personal_info.date.split("-")
         const dateFormat = `${date[1]}/${date[2]}/${date[0]}`
-
+console.log(characterId);
         fetch('https://chess-tournament-api.devtest.ge/api/register', {
             method: 'POST',
             body: JSON.stringify({
@@ -280,9 +280,9 @@ doneStep.addEventListener("click", e => {
                 email: registerFormData.personal_info.email,
                 phone:  registerFormData.personal_info.phone,
                 date_of_birth: dateFormat,
-                experience_level: "beginner",
-                already_participated: true,
-                character_id: 2
+                experience_level: experienceLevel === "intermediate" ? "normal" : experienceLevel,
+                already_participated: selectParticipate === "yes" ? true : false,
+                character_id: int(characterId)
 
               }),
             headers: {
@@ -290,7 +290,8 @@ doneStep.addEventListener("click", e => {
             }
         }).then(function (response) {
             if (response.ok) {
-                console.log(response);
+                console.log(document.querySelector(".final_page_row").classList.remove("disabled"));
+                registerRow.classList.add("disabled")
             }
             return Promise.reject(response);
         }).then(function (data) {
