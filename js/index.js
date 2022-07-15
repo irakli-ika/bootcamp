@@ -216,6 +216,7 @@ selects.forEach(select => {
     select.addEventListener("click", e => {
         const selectType = e.target.dataset.selectLists
         const selectedInner = e.target.innerText
+        const selectedId = e.target.dataset.characterId
         const selectBox = document.getElementById(selectType)
         const selectBoxInner = document.querySelector("." + selectType)
         const selectListArrow = document.querySelectorAll("." + e.target.dataset.selectArrow)
@@ -224,35 +225,30 @@ selects.forEach(select => {
         selectBox.classList.add('disabled')
         selectBoxInner.innerHTML = selectedInner
         document.querySelector("." + selectType).dataset.selectValue = selectedInner
+        document.querySelector("." + selectType).dataset.selectId = selectedId
         selectListArrow.forEach(e => e.classList.toggle("disabled"))
     })
 })
 
 // Done button function
 doneStep.addEventListener("click", e => {
+    
     let chess_experience_errors = []
     const selectLevel = document.querySelector(".select_label.level").dataset.selectValue
     const selectCharacter = document.querySelector(".select_label.character").dataset.selectValue
+    const selectCharacterId = document.querySelector(".select_label.character").dataset.selectId
     const selectParticipate = document.getElementsByName("participate")
-    let experienceLevel;
-    let alreadyParticipated;
-    let characterId;
 
     openSelectBox.forEach(select => select.classList.remove("inputError"))
-    
 
-    if (selectLevel) {
-        experienceLevel = selectLevel
-    } else {
+    if (!selectLevel) {
         chess_experience_errors.push({
             type: "empty knowledge",
             message: "Please choose knowledge field",
             placeholder: "level"
         })
     }
-    if (selectCharacter) {
-        alreadyParticipated = selectCharacter
-    } else {
+    if (!selectCharacter) {
         chess_experience_errors.push({
             type: "empty character",
             message: "Please choose character field",
@@ -272,17 +268,17 @@ doneStep.addEventListener("click", e => {
     } else {
         const date =  registerFormData.personal_info.date.split("-")
         const dateFormat = `${date[1]}/${date[2]}/${date[0]}`
-console.log(characterId);
+
         fetch('https://chess-tournament-api.devtest.ge/api/register', {
             method: 'POST',
             body: JSON.stringify({
-                name: registerFormData.personal_info.name,
-                email: registerFormData.personal_info.email,
-                phone:  registerFormData.personal_info.phone,
-                date_of_birth: dateFormat,
-                experience_level: experienceLevel === "intermediate" ? "normal" : experienceLevel,
-                already_participated: selectParticipate === "yes" ? true : false,
-                character_id: int(characterId)
+                "name": registerFormData.personal_info.name,
+                "email": registerFormData.personal_info.email,
+                "phone":  registerFormData.personal_info.phone,
+                "date_of_birth": dateFormat,
+                "experience_level": selectLevel === "intermediate" ? "normal" : selectLevel,
+                "already_participated": selectParticipate === "yes" ? true : false,
+                "character_id": +selectCharacterId
 
               }),
             headers: {
@@ -290,8 +286,9 @@ console.log(characterId);
             }
         }).then(function (response) {
             if (response.ok) {
-                console.log(document.querySelector(".final_page_row").classList.remove("disabled"));
+                document.querySelector(".final_page_row").classList.remove("disabled")
                 registerRow.classList.add("disabled")
+                localStorage.removeItem('registerFormData')
             }
             return Promise.reject(response);
         }).then(function (data) {
