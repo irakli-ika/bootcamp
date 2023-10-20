@@ -1,0 +1,8 @@
+
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^mytincoin\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.mytincoin\.com$
+RewriteRule ^/?$ "https\:\/\/mytincoin\.com\/" [R=301,L]
+
